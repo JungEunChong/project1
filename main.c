@@ -181,18 +181,99 @@ void report_file() {
 }
 
 void update_book_one() {
-
+	char subject[40];
+	char sb[40];
+	char cd[40];
+	int p, a, b;
+        T_book* bo;
+        printf("Enter a subject > ");
+        scanf("%s", subject);
+        if(b_search_by_subject(subject) == NULL) printf("No such book!\n");
+        else {
+		bo = b_search_by_subject(subject);
+		printf("Enter Subject > ");
+		scanf("%s", sb);
+		printf("Enter Code > ");
+		scanf("%s", cd);
+		printf("Enter Page > ");
+		scanf("%d", &p);
+		printf("Enter Amount > ");
+		scanf("%d", &a);
+		printf("Enter Borrow > ");
+		scanf("%d", &b);
+		b_update(bo, sb, cd, p, a, b);
+		printf("Updated\n");
+        }
 }
 
 void update_book() {
+	int menu;
+        RE:
+        printf("Find Method (1.Subject 2.Code 3.Page 4.Amount 5.Borrow) > ");
+        scanf("%d", &menu);
+        printf("\n");
 
+        switch(menu) {
+                case 1:
+                        b_many(2, 1);
+                        break;
+                case 2:
+                        b_many(2, 2);
+                        break;
+                case 3:
+                        b_many(2, 3);
+                        break;
+                case 4:
+                        b_many(2, 4);
+                        break;
+                case 5:
+                        b_many(2, 5);
+                        break;
+                default:
+                        goto RE;
+                        break;
+        }
 }
 
 void release_book_one() {
-
+        char subject[40];
+        T_book* bo;
+        printf("Enter a subject > ");
+        scanf("%s", subject);
+        if(b_search_by_subject(subject) == NULL) printf("No such book!\n");
+        else {
+                bo = b_search_by_subject(subject);
+		b_delete(bo);
+        }
 }
 
 void release_book() {
+        int menu;
+        RE:
+        printf("Find Method (1.Subject 2.Code 3.Page 4.Amount 5.Borrow) > ");
+        scanf("%d", &menu);
+        printf("\n");
+
+        switch(menu) {
+                case 1:
+                        b_many(3, 1);
+                        break;
+                case 2:
+                        b_many(3, 2);
+                        break;
+                case 3:
+                        b_many(3, 3);
+                        break;
+                case 4:
+                        b_many(3, 4);
+                        break;
+                case 5:
+                        b_many(3, 5);
+                        break;
+                default:
+                        goto RE;
+                        break;
+        }
 
 }
 
