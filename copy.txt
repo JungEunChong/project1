@@ -1,0 +1,9 @@
+			char subject[40];
+			printf("Enter a subject > ");
+			scanf("%s", subject);
+			for(int i = 0; i < MAX_AMOUNTS; i++) {
+				if(books[i] == NULL) continue;
+				else {
+					if(strstr(books[i]->subject, subject) != NULL) printf("%s\n", b_to_string(books[i]));
+				}
+			}

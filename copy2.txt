@@ -1,0 +1,11 @@
+					if(what == 3) {
+						if(crit == 1) {
+							if(books[i]->page >= num) printf("%s\n", b_to_string(books[i]));
+						}
+						else if(crit == 2) {
+							if(books[i]->page == num) printf("%s\n", b_to_string(books[i]));
+						}
+						else if(crit == 3) {
+							if(books[i]->page <= num) printf("%s\n", b_to_string(books[i]));
+						}
+					}

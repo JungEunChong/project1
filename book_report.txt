@@ -1,0 +1,8 @@
+--- Book Report ---
+
+Total book : 4
+
+1. [ABC123] book1 (p.125) / amount : 5 / borrow : 3
+2. [ABC456] book2 (p.189) / amount : 4 / borrow : 2
+3. [ABC789] book3 (p.207) / amount : 3 / borrow : 1
+4. [cd_dummy] sb_dummy (p.123) / amount : 4 / borrow : 5
