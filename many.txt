@@ -1,0 +1,94 @@
+		char str[40];		// subject나 code 입력하는 변수
+		int num;		// page, amount, borrow 입력하는 변수
+		int crit;		// page, amount, borrow 일 때 이상, 일치, 이하의 기준을 입력하는 변수
+		int no = 0;		// no가 0에서 1로 바뀌는 동작이 없으면 해당하는 책이 없다는 것을 뜻하는 변수
+
+		if(what == 1) printf("Enter a subject > ");		// what == 1 이면 subject
+		else if(what == 2) printf("Enter a code > ");		// what == 2 이면 code
+		else if(what == 3) printf("Enter a pages > "); 		// what == 3 이면 page
+		else if(what == 4) printf("Enter a amount > "); 	// what == 4 이면 amount
+		else if(what == 5) printf("Enter a borrow > ");		// what == 5 이면 borrow
+
+		if(what == 1 || what == 2) scanf("%s", str);
+		else scanf("%d", &num);
+		if(what >= 3 && what <= 5) {
+			printf("Crit : 1.More than 2.Same 3.Less than > ");	// 1 입력시 num이상에 해당하는  책들 출력, 2 입력시 num과 같은 책들 출력, 3 입력시 num 이하에 해당하는 책들 출력
+			scanf("%d", &crit);
+		}
+		
+		for(int i = 0; i < MAX_AMOUNTS; i++) {
+			if(books[i] == NULL) continue;
+			else {
+				if(what == 1) {				// what == 1 이면 subject
+					if(strstr(books[i]->subject, str) != NULL) {
+						printf("%s\n", b_to_string(books[i]));
+						no = 1;
+					}
+				} else if(what == 2) {			// what == 2 이면 code
+					if(strstr(books[i]->code, str) != NULL) {
+						printf("%s\n", b_to_string(books[i]));
+						no = 1;
+					}
+				} else if(what == 3) {			// what == 3 이면 page
+					if(crit == 1) {
+						if(books[i]->page >= num) {
+							printf("%s\n", b_to_string(books[i]));
+							no = 1;
+						}
+					}
+					else if(crit == 2) {
+						if(books[i]->page == num) {
+							printf("%s\n", b_to_string(books[i]));
+							no = 1;
+						}
+					}
+					else if(crit == 3) {
+						if(books[i]->page <= num) {
+							printf("%s\n", b_to_string(books[i]));
+							no = 1;
+						}
+					}
+				}
+				else if(what == 4) {		// what == 4 이면 amount
+					if(crit == 1) {
+						if(books[i]->amount >= num) {
+							printf("%s\n", b_to_string(books[i]));
+							no = 1;
+						}
+					}
+					else if(crit == 2) {
+						if(books[i]->amount == num) {
+							printf("%s\n", b_to_string(books[i]));
+							no = 1;
+						}
+					}
+					else if(crit == 3) {
+						if(books[i]->amount <= num) {
+							printf("%s\n", b_to_string(books[i]));
+							no = 1;
+						}
+					}
+				}
+				else if(what == 5) {		// what == 5 이면 borrow
+					if(crit == 1) {
+						if(books[i]->borrow >= num) {
+							printf("%s\n", b_to_string(books[i]));
+							no = 1;
+						}
+					}
+					else if(crit == 2) {
+						if(books[i]->borrow == num) {
+							printf("%s\n", b_to_string(books[i]));
+							no = 1;
+						}
+					}
+					else if(crit == 3) {
+						if(books[i]->borrow <= num) {
+							printf("%s\n", b_to_string(books[i]));
+							no = 1;
+						}
+					}
+				}
+			}
+		}
+		if(no == 0) printf("No such book!\n");

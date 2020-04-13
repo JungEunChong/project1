@@ -142,11 +142,23 @@ char* b_to_string(T_book* b) {
 }
 
 void b_update(T_book* bo, char* sb, char* cd, int p, int a, int b) {
-
+	strcpy(bo->subject, sb);
+	strcpy(bo->code, cd);
+	bo->page = p;
+	bo->amount = a;
+	bo->borrow = b;
 }
 
 void b_delete(T_book* b) {
-
+	int i;
+	for(i = 0; i < MAX_AMOUNTS; i++) {
+		if(books[i] && strcmp(b->subject, books[i]->subject) == 0) {
+			printf("'%s' Deleted\n", books[i]->subject);
+			free(books[i]);
+			books[i] = NULL;
+		}
+	}
+	_count--;
 }
 
 T_book* b_search_by_subject(char* sb) {
@@ -166,7 +178,7 @@ T_book* b_search_by_code(char* cd) {
 }
 
 void b_many(int mode, int what) {	// mode는 1.Read 2.Update 3.Delete 로 나뉘어져있으며, what은 1.subject, 2.code, 3.page, 4.amount 5.borrow 로 나뉘어져 있다.
-	if(mode == 1 && (what >= 1 && what <= 5)) {  		// Read 모드
+	if(what >= 1 && what <= 5) {  		
 		char str[40];		// subject나 code 입력하는 변수
 		int num;		// page, amount, borrow 입력하는 변수
 		int crit;		// page, amount, borrow 일 때 이상, 일치, 이하의 기준을 입력하는 변수
@@ -184,79 +196,79 @@ void b_many(int mode, int what) {	// mode는 1.Read 2.Update 3.Delete 로 나뉘
 			printf("Crit : 1.More than 2.Same 3.Less than > ");	// 1 입력시 num이상에 해당하는  책들 출력, 2 입력시 num과 같은 책들 출력, 3 입력시 num 이하에 해당하는 책들 출력
 			scanf("%d", &crit);
 		}
+
+		char update[40];
+		int up_num;
 		
 		for(int i = 0; i < MAX_AMOUNTS; i++) {
 			if(books[i] == NULL) continue;
 			else {
 				if(what == 1) {				// what == 1 이면 subject
-					if(strstr(books[i]->subject, str) != NULL) {
-						printf("%s\n", b_to_string(books[i]));
-						no = 1;
-					}
+					if(strstr(books[i]->subject, str) != NULL) no = 1;
 				} else if(what == 2) {			// what == 2 이면 code
-					if(strstr(books[i]->code, str) != NULL) {
-						printf("%s\n", b_to_string(books[i]));
-						no = 1;
-					}
+					if(strstr(books[i]->code, str) != NULL) no = 1;
 				} else if(what == 3) {			// what == 3 이면 page
 					if(crit == 1) {
-						if(books[i]->page >= num) {
-							printf("%s\n", b_to_string(books[i]));
-							no = 1;
-						}
+						if(books[i]->page >= num) no = 1;
 					}
 					else if(crit == 2) {
-						if(books[i]->page == num) {
-							printf("%s\n", b_to_string(books[i]));
-							no = 1;
-						}
+						if(books[i]->page == num) no = 1;
 					}
 					else if(crit == 3) {
-						if(books[i]->page <= num) {
-							printf("%s\n", b_to_string(books[i]));
-							no = 1;
-						}
+						if(books[i]->page <= num) no = 1;
 					}
 				}
 				else if(what == 4) {		// what == 4 이면 amount
 					if(crit == 1) {
-						if(books[i]->amount >= num) {
-							printf("%s\n", b_to_string(books[i]));
-							no = 1;
-						}
+						if(books[i]->amount >= num) no = 1;
 					}
 					else if(crit == 2) {
-						if(books[i]->amount == num) {
-							printf("%s\n", b_to_string(books[i]));
-							no = 1;
-						}
+						if(books[i]->amount == num) no = 1;
 					}
 					else if(crit == 3) {
-						if(books[i]->amount <= num) {
-							printf("%s\n", b_to_string(books[i]));
-							no = 1;
-						}
+						if(books[i]->amount <= num) no = 1;
 					}
 				}
 				else if(what == 5) {		// what == 5 이면 borrow
 					if(crit == 1) {
-						if(books[i]->borrow >= num) {
-							printf("%s\n", b_to_string(books[i]));
-							no = 1;
-						}
+						if(books[i]->borrow >= num) no = 1;
 					}
 					else if(crit == 2) {
-						if(books[i]->borrow == num) {
-							printf("%s\n", b_to_string(books[i]));
-							no = 1;
-						}
+						if(books[i]->borrow == num) no = 1;
 					}
 					else if(crit == 3) {
-						if(books[i]->borrow <= num) {
-							printf("%s\n", b_to_string(books[i]));
-							no = 1;
-						}
+						if(books[i]->borrow <= num) no = 1;
 					}
+				}
+				
+				if(no == 1) {
+					if(mode == 1) printf("%s\n", b_to_string(books[i]));
+					else if(mode == 2) {
+						printf("%s\n", b_to_string(books[i]));
+						printf("Update Subject > ");
+						scanf("%s", update);
+						strcpy(books[i]->subject, update);
+						printf("Update Code > ");
+						scanf("%s", update);
+						strcpy(books[i]->code, update);
+						printf("Update Page > ");
+						scanf("%d", &up_num);
+						books[i]->page = up_num;
+						printf("Update Amount > ");
+						scanf("%d", &up_num);
+						books[i]->amount = up_num;
+						printf("Update Borrow > ");
+						scanf("%d", &up_num);
+						books[i]->borrow = up_num;
+					}
+					else if(mode == 3) {
+						printf("'%s' Deleted\n", books[i]->subject);
+						free(books[i]);
+						books[i] = NULL;
+						_count--;
+					}
+					
+					no = 2;
 				}
 			}
 		}
