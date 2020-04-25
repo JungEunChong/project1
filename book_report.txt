@@ -1,8 +1,54 @@
 --- Book Report ---
 
-Total book : 4
+Total book : 50
 
-1. [ABC123] book1 (p.125) / amount : 5 / borrow : 3
-2. [ABC456] book2 (p.189) / amount : 4 / borrow : 2
-3. [ABC789] book3 (p.207) / amount : 3 / borrow : 1
-4. [cd_dummy] sb_dummy (p.123) / amount : 4 / borrow : 5
+1. [JAD158] 더 해빙(The Having) (p.215) / amount : 4 / borrow : 1
+2. [AIE491] 흔한남매. 4 (p.263) / amount : 2 / borrow : 1
+3. [TIC199] 1cm 다이빙 (p.187) / amount : 2 / borrow : 2
+4. [MSA451] 녹나무의 파수꾼 (p.241) / amount : 1 / borrow : 1
+5. [QPE827] 당신이 옳다 (p.311) / amount : 3 / borrow : 0
+6. [BTY954] 하버드 상위 1퍼센트의 비밀 (p.301) / amount : 3 / borrow : 1
+7. [QIC266] 날씨가 좋으면 찾아가겠어요 (p.195) / amount : 3 / borrow : 0
+8. [PVJ594] 내일의 부. 1: 알파편 (p.245) / amount : 3 / borrow : 2
+9. [CNC910] 타인의 해석 (p.266) / amount : 2 / borrow : 2
+10. [HJT010] 페스트(세계문학전집 267) (p.280) / amount : 2 / borrow : 2
+11. [GOT492] 주식투자 무작정 따라하기 (p.241) / amount : 3 / borrow : 1
+12. [ERY850] 설민석의 한국사 대모험. 13 (p.218) / amount : 3 / borrow : 2
+13. [RUF890] 존리의 부자되기 습관 (p.269) / amount : 2 / borrow : 2
+14. [TRW262] 아몬드 (p.342) / amount : 1 / borrow : 0
+15. [BMK491] 지리의 힘 (p.302) / amount : 2 / borrow : 1
+16. [QQC623] 내일의 부. 2: 오메가편 (p.297) / amount : 1 / borrow : 1
+17. [GBF100] 데미안 (p.519) / amount : 3 / borrow : 0
+18. [CPQ094] 데일 카네기 인간관계론 (p.410) / amount : 3 / borrow : 1
+19. [NIU182] 팩트풀니스 (p.274) / amount : 2 / borrow : 2
+20. [JOR968] 펭수, 디 오리지널 (p.232) / amount : 3 / borrow : 1
+21. [LBI123] 설민석의 세계사 대모험. 5 (p.222) / amount : 2 / borrow : 2
+22. [CDV950] 총 균 쇠 (p.211) / amount : 1 / borrow : 1
+23. [VJJ001] 해커스 토익 기출 보카 (p.442) / amount : 3 / borrow : 2
+24. [OJP044] 이 한마디가 나를 살렸다 (p.257) / amount : 1 / borrow : 1
+25. [GBH981] 딸에게 보내는 심리학 편지 (p.270) / amount : 2 / borrow : 1
+26. [EHN519] 지쳤거나 좋아하는 게 없거나 (p.319) / amount : 2 / borrow : 0
+27. [ANA919] 코로나 경제 전쟁 (p.250) / amount : 3 / borrow : 0
+28. [HJT049] 페스트(초판본) (p.281) / amount : 2 / borrow : 2
+29. [CNA461] 명리심리학 (p.391) / amount : 3 / borrow : 2
+30. [OKI024] 사피엔스 (p.308) / amount : 2 / borrow : 0
+31. [YIF050] 우리가 인생이라 부르는 것들 (p.238) / amount : 4 / borrow : 1
+32. [SKC377] 어둠의 눈 (p.335) / amount : 3 / borrow : 2
+33. [HIH959] 부의 추월차선 (p.302) / amount : 1 / borrow : 1
+34. [NBJ571] 코스모스 (p.320) / amount : 3 / borrow : 3
+35. [KQP991] 흔한 남매 안 흔한 일기. 1 (p.268) / amount : 2 / borrow : 2
+36. [MNU579] 설민석의 삼국지. 1 (p.232) / amount : 1 / borrow : 1
+37. [EGC249] 이상한 수학책 (p.200) / amount : 2 / borrow : 0
+38. [ONE195] 원피스. 95 (p.355) / amount : 1 / borrow : 0
+39. [BJJ303] Go Go 카카오프렌즈. 13: 호주 (p.310) / amount : 2 / borrow : 2
+40. [TJY090] 나는 나로 살기로 했다 (p.133) / amount : 2 / borrow : 2
+41. [DDE033] 움직임의 힘 (p.236) / amount : 2 / borrow : 2
+42. [NOG959] 부자 아빠 가난한 아빠. 1 (p.330) / amount : 3 / borrow : 3
+43. [VIN090] 당신의 삶에 명상이 필요할 때VIN090 (p.266) / amount : 2 / borrow : 2
+44. [IYE377] 사서함 110호의 우편물 (p.201) / amount : 2 / borrow : 0
+45. [TII663] 경제기사 궁금증 300문 300답 (p.322) / amount : 4 / borrow : 3
+46. [EIR731] 사장을 위한 MBA 필독서 50 (p.288) / amount : 1 / borrow : 1
+47. [GFF493] 여행의 이유 (p.329) / amount : 1 / borrow : 1
+48. [UIA313] 호밀밭의 파수꾼 (p.320) / amount : 1 / borrow : 1
+49. [TTQ756] 설민석의 조선왕조실록 (p.310) / amount : 2 / borrow : 2
+50. [EBC959] 입시설계, 초등부터 시작하라 (p.266) / amount : 3 / borrow : 3

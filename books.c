@@ -37,8 +37,8 @@ void b_read_data(int check) {
 #endif
 		while(1) {
 			if(feof(book_data)) break;
-			result = fscanf(book_data, "%s %s %d %d %d", cd, sb, &p, &a, &bo);
-			if(result < 5) break;
+			result = fscanf(book_data, "%s\t%[^\t]\t%d\t%d\t%d", cd, sb, &p, &a, &bo);
+			//if(result < 5) break;
 			if(b_search_by_subject(sb)) printf("%s already received!\n", sb);
 			else {
 				if(b_search_by_code(cd)) printf("%s already received!\n", cd);
@@ -68,7 +68,7 @@ void b_read_data(int check) {
 		int result;
 		while(1) {
 			if(feof(book_data)) break;
-			result = fscanf(book_data, "%s %s %d %d %d", cd, sb, &p, &a, &bo);
+			result = fscanf(book_data, "%s\t%[^\t]\t%d\t%d\t%d", cd, sb, &p, &a, &bo);
 			if(result < 5) break;
 			b_create(sb, cd, p, a, bo);
 #ifdef DEBUG
@@ -93,7 +93,7 @@ void b_save_data() {
 #endif
 	for(i = 0; i < MAX_AMOUNTS; i++) {
 		if(books[i] != NULL) { 
-			fprintf(book_data, "%s %s %d %d %d\n", books[i]->code, books[i]->subject, books[i]->page, books[i]->amount, books[i]->borrow);
+			fprintf(book_data, "%s\t%s\t%d\t%d\t%d\n", books[i]->code, books[i]->subject, books[i]->page, books[i]->amount, books[i]->borrow);
 #ifdef DEBUG
 			printf("[DEBUG] Save data\n");
 #endif
@@ -274,4 +274,167 @@ void b_many(int mode, int what) {	// mode는 1.Read 2.Update 3.Delete 로 나뉘
 		}
 		if(no == 0) printf("No such book!\n");
 	}
+}
+
+void b_sort(int mode) {
+	char tmpSb[40];
+	char tmpCd[40];
+	int tmpP;
+	int tmpA;
+	int tmpB;
+
+	b_optimize();
+
+	if(mode == 1) { // Subject
+		for(int i = 0; i < _count - 1; i++) {
+			for(int j = 0; j < _count - i - 1; j++) {
+				if(strcmp(books[j]->subject, books[j+1]->subject) >= 1) {
+					strcpy(tmpSb, books[j]->subject);
+					strcpy(tmpCd, books[j]->code);
+					tmpP = books[j]->page;
+					tmpA = books[j]->amount;
+					tmpB = books[j]->borrow;
+
+					strcpy(books[j]->subject, books[j+1]->subject);
+					strcpy(books[j]->code, books[j+1]->code);
+					books[j]->page = books[j+1]->page;
+					books[j]->amount = books[j+1]->amount;
+					books[j]->borrow = books[j+1]->borrow;
+
+					strcpy(books[j+1]->subject, tmpSb);
+					strcpy(books[j+1]->code, tmpCd);
+					books[j+1]->page = tmpP;
+					books[j+1]->amount = tmpA;
+					books[j+1]->borrow = tmpB;
+				}
+			}
+		}
+	}
+	else if(mode == 2) { // code
+		for(int i = 0; i < _count - 1; i++) {
+                        for(int j = 0; j < _count - i - 1; j++) {
+                                if(strcmp(books[j]->code, books[j+1]->code) >= 1) {
+                                        strcpy(tmpSb, books[j]->subject);
+                                        strcpy(tmpCd, books[j]->code);
+                                        tmpP = books[j]->page;
+                                        tmpA = books[j]->amount;
+                                        tmpB = books[j]->borrow;
+
+                                        strcpy(books[j]->subject, books[j+1]->subject);
+                                        strcpy(books[j]->code, books[j+1]->code);
+                                        books[j]->page = books[j+1]->page;
+                                        books[j]->amount = books[j+1]->amount;
+                                        books[j]->borrow = books[j+1]->borrow;
+
+                                        strcpy(books[j+1]->subject, tmpSb);
+                                        strcpy(books[j+1]->code, tmpCd);
+                                        books[j+1]->page = tmpP;
+                                        books[j+1]->amount = tmpA;
+                                        books[j+1]->borrow = tmpB;
+                                }
+                        }
+                }
+	}
+	else if(mode == 3) { // page
+                for(int i = 0; i < _count - 1; i++) {
+                        for(int j = 0; j < _count - i - 1; j++) {
+                                if(books[j]->page > books[j+1]->page) {
+                                        strcpy(tmpSb, books[j]->subject);
+                                        strcpy(tmpCd, books[j]->code);
+                                        tmpP = books[j]->page;
+                                        tmpA = books[j]->amount;
+                                        tmpB = books[j]->borrow;
+
+                                        strcpy(books[j]->subject, books[j+1]->subject);
+                                        strcpy(books[j]->code, books[j+1]->code);
+                                        books[j]->page = books[j+1]->page;
+                                        books[j]->amount = books[j+1]->amount;
+                                        books[j]->borrow = books[j+1]->borrow;
+
+                                        strcpy(books[j+1]->subject, tmpSb);
+                                        strcpy(books[j+1]->code, tmpCd);
+                                        books[j+1]->page = tmpP;
+                                        books[j+1]->amount = tmpA;
+                                        books[j+1]->borrow = tmpB;
+                                }
+                        }
+                }
+	}
+	else if(mode == 4) { // amount
+                for(int i = 0; i < _count - 1; i++) {
+                        for(int j = 0; j < _count - i - 1; j++) {
+                                if(books[j]->amount > books[j+1]->amount) {
+                                        strcpy(tmpSb, books[j]->subject);
+                                        strcpy(tmpCd, books[j]->code);
+                                        tmpP = books[j]->page;
+                                        tmpA = books[j]->amount;
+                                        tmpB = books[j]->borrow;
+
+                                        strcpy(books[j]->subject, books[j+1]->subject);
+                                        strcpy(books[j]->code, books[j+1]->code);
+                                        books[j]->page = books[j+1]->page;
+                                        books[j]->amount = books[j+1]->amount;
+                                        books[j]->borrow = books[j+1]->borrow;
+
+                                        strcpy(books[j+1]->subject, tmpSb);
+                                        strcpy(books[j+1]->code, tmpCd);
+                                        books[j+1]->page = tmpP;
+                                        books[j+1]->amount = tmpA;
+                                        books[j+1]->borrow = tmpB;
+                                }
+                        }
+                }
+	}
+	else { 		    // borrow
+                for(int i = 0; i < _count - 1; i++) {
+                        for(int j = 0; j < _count - i - 1; j++) {
+                                if(books[j]->borrow > books[j+1]->borrow) {
+                                        strcpy(tmpSb, books[j]->subject);
+                                        strcpy(tmpCd, books[j]->code);
+                                        tmpP = books[j]->page;
+                                        tmpA = books[j]->amount;
+                                        tmpB = books[j]->borrow;
+
+                                        strcpy(books[j]->subject, books[j+1]->subject);
+                                        strcpy(books[j]->code, books[j+1]->code);
+                                        books[j]->page = books[j+1]->page;
+                                        books[j]->amount = books[j+1]->amount;
+                                        books[j]->borrow = books[j+1]->borrow;
+
+                                        strcpy(books[j+1]->subject, tmpSb);
+                                        strcpy(books[j+1]->code, tmpCd);
+                                        books[j+1]->page = tmpP;
+                                        books[j+1]->amount = tmpA;
+                                        books[j+1]->borrow = tmpB;
+                                }
+                        }
+                }
+	}
+	printf("Sort Completed\n");
+
+}
+
+void b_optimize() {
+	int op = 0;
+	while(1) {
+		if(op == 1) break;
+		
+		int index = b_first_available();
+		if(index == -1) {
+			printf("Full!!\n");
+			break;
+		}
+
+		for(int i = index; i < MAX_AMOUNTS; i++) {
+			if(books[i] != NULL) {
+				b_create(books[i]->subject, books[i]->code, books[i]->page, books[i]->amount, books[i]->borrow);
+				b_delete(books[i]);
+				break;
+			}
+			//printf("%d\n", i);
+			if(i == MAX_AMOUNTS - 1) op = 1;
+		}
+	}
+	
+	printf("Optimize Completed\n");
 }

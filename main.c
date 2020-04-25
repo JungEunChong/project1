@@ -75,7 +75,7 @@ void receive_book() {
 		int page, amount, borrow;
 		printf("Enter a new book's info.\n");
 		printf("Subject > ");
-		scanf("%s", subject);
+		scanf(" %[^\n]s", subject);
 		if(b_search_by_subject(subject)) {
 			printf("Duplicated subject!\n");
 			return;
@@ -274,13 +274,37 @@ void release_book() {
                         goto RE;
                         break;
         }
-
 }
 
 void sort_book() {
+        int menu;
+        RE:
+        printf("Find Method (1.Subject 2.Code 3.Page 4.Amount 5.Borrow) > ");
+        scanf("%d", &menu);
+        printf("\n");
 
+        switch(menu) {
+                case 1:
+                        b_sort(1);
+                        break;
+                case 2:
+                        b_sort(2);
+                        break;
+                case 3:
+                        b_sort(3);
+                        break;
+                case 4:
+                        b_sort(4);
+                        break;
+                case 5:
+                        b_sort(5);
+                        break;
+                default:
+                        goto RE;
+                        break;
+        }
 }
 
 void optimize_record() {
-
+	b_optimize();
 }

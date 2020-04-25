@@ -25,3 +25,5 @@ void b_delete(T_book* b);
 T_book* b_search_by_subject(char* sb);
 T_book* b_search_by_code(char* cd);
 void b_many(int mode, int what);
+void b_sort(int mode);
+void b_optimize();
