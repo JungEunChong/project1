@@ -126,8 +126,9 @@ void b_report() {
 
 void b_list() {
 	int i;
+	printf("< Total : %d >\n", b_count());
 	for(i = 0; i < MAX_AMOUNTS; i++) {
-		if(books[i] != NULL) printf("%s\n", b_to_string(books[i]));
+		if(books[i] != NULL) printf("%d. %s\n", i+1, b_to_string(books[i]));
 	}
 }
 
@@ -190,7 +191,7 @@ void b_many(int mode, int what) {	// mode는 1.Read 2.Update 3.Delete 로 나뉘
 		else if(what == 4) printf("Enter a amount > "); 	// what == 4 이면 amount
 		else if(what == 5) printf("Enter a borrow > ");		// what == 5 이면 borrow
 
-		if(what == 1 || what == 2) scanf("%s", str);
+		if(what == 1 || what == 2) scanf(" %[^\n]s", str);
 		else scanf("%d", &num);
 		if(what >= 3 && what <= 5) {
 			printf("Crit : 1.More than 2.Same 3.Less than > ");	// 1 입력시 num이상에 해당하는  책들 출력, 2 입력시 num과 같은 책들 출력, 3 입력시 num 이하에 해당하는 책들 출력
@@ -246,7 +247,7 @@ void b_many(int mode, int what) {	// mode는 1.Read 2.Update 3.Delete 로 나뉘
 					else if(mode == 2) {
 						printf("%s\n", b_to_string(books[i]));
 						printf("Update Subject > ");
-						scanf("%s", update);
+						scanf(" %[^\n]s", update);
 						strcpy(books[i]->subject, update);
 						printf("Update Code > ");
 						scanf("%s", update);
@@ -279,9 +280,7 @@ void b_many(int mode, int what) {	// mode는 1.Read 2.Update 3.Delete 로 나뉘
 void b_sort(int mode) {
 	char tmpSb[40];
 	char tmpCd[40];
-	int tmpP;
-	int tmpA;
-	int tmpB;
+	int tmpP, tmpA, tmpB;
 
 	b_optimize();
 
@@ -416,6 +415,11 @@ void b_sort(int mode) {
 
 void b_optimize() {
 	int op = 0;
+
+	char tmpSb[40];
+	char tmpCd[40];
+	int tmpP, tmpA, tmpB;
+
 	while(1) {
 		if(op == 1) break;
 		
@@ -427,8 +431,15 @@ void b_optimize() {
 
 		for(int i = index; i < MAX_AMOUNTS; i++) {
 			if(books[i] != NULL) {
-				b_create(books[i]->subject, books[i]->code, books[i]->page, books[i]->amount, books[i]->borrow);
+                                strcpy(tmpSb, books[i]->subject);
+                                strcpy(tmpCd, books[i]->code);
+                                tmpP = books[i]->page;
+                                tmpA = books[i]->amount;
+                                tmpB = books[i]->borrow;
+
 				b_delete(books[i]);
+
+				b_create(tmpSb, tmpCd, tmpP, tmpA, tmpB);
 				break;
 			}
 			//printf("%d\n", i);

@@ -113,7 +113,7 @@ void info_book() {
 	char subject[40];
 	T_book* b;
 	printf("Enter a subject > ");
-	scanf("%s", subject);
+	scanf(" %[^\n]s", subject);
 	if(b_search_by_subject(subject) == NULL) printf("No such book!\n");
 	else {
 		b = b_search_by_subject(subject);
@@ -187,12 +187,12 @@ void update_book_one() {
 	int p, a, b;
         T_book* bo;
         printf("Enter a subject > ");
-        scanf("%s", subject);
+        scanf(" %[^\n]s", subject);
         if(b_search_by_subject(subject) == NULL) printf("No such book!\n");
         else {
 		bo = b_search_by_subject(subject);
 		printf("Enter Subject > ");
-		scanf("%s", sb);
+		scanf(" %[^\n]s", sb);
 		printf("Enter Code > ");
 		scanf("%s", cd);
 		printf("Enter Page > ");
@@ -239,7 +239,7 @@ void release_book_one() {
         char subject[40];
         T_book* bo;
         printf("Enter a subject > ");
-        scanf("%s", subject);
+        scanf(" %[^\n]s", subject);
         if(b_search_by_subject(subject) == NULL) printf("No such book!\n");
         else {
                 bo = b_search_by_subject(subject);
